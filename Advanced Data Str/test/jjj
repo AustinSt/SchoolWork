@@ -1,0 +1,19 @@
+INCLUDE_DIRS := Includes
+CC 			 := g++
+CFLAGS 		 := -I$(INCLUDE_DIRS)
+
+OBJS		 := customErrorClass.o 
+DEPS		 := customErrorClass.h
+
+.PHONY: clean all
+
+all: customErrorClass.o Stau_CodeChallengeOne
+
+clean:
+	rm $(OBJS) Stau_CodeChallengeOne
+
+customErrorClass.o: customErrorClass.cpp $(DEPS)
+	$(CC) -c -o $@ $(CFLAGS) $<
+
+Stau_CodeChallengeOne: $(OBJS)
+	$(CC) -o $@ $^ $(CFLAGS) 
